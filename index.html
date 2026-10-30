@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yu Japanese | Practical Japanese Lessons</title>
+
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --card: #ffffff;
+      --text: #34312f;
+      --muted: #746f6a;
+      --line: #eadfd5;
+      --accent: #5f7568;
+      --accent-soft: #e7efe9;
+      --dark: #33443b;
+      --peach: #e8b89a;
+      --peach-soft: #f6e5da;
+      --yellow-soft: #f4ead0;
+      --green-soft: #e5eee7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Noto Sans TC",
+                   "PingFang TC", "Hiragino Sans", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #414141;
+    }
+
+    .hero {
+      min-height: 84vh;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 70px;
+      align-items: center;
+      padding: 80px 9%;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: 1.02;
+      margin: 12px 0 22px;
+      letter-spacing: -2px;
+      color: var(--dark);
+    }
+
+    .hero .subtitle {
+      max-width: 650px;
+      font-size: 19px;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 999px;
+      background: var(--peach);
+      color: #2f2a27;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--dark);
+      border: 1px solid var(--dark);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 38px;
+      box-shadow: 0 20px 50px rgba(38, 46, 41, 0.08);
+    }
+
+    .hero-card h3 {
+      margin: 4px 0 12px;
+      font-size: 30px;
+    }
+
+    .hero-card .jp {
+      margin: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero-facts {
+      display: grid;
+      gap: 13px;
+      margin-top: 28px;
+      color: #4c4c4c;
+      font-size: 14px;
+    }
+
+    section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 90px 28px;
+    }
+
+    .section-title {
+      margin-bottom: 34px;
+    }
+
+    .section-title .eyebrow {
+      margin-bottom: 7px;
+      display: block;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 50px);
+      color: var(--dark);
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 700px;
+      margin-top: 12px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 17px;
+    }
+
+    .fact-list {
+      background: var(--card);
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .fact-list div {
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee9e2;
+    }
+
+    .fact-list div:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .stars {
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: #967a2f;
+    }
+
+    .review h3 {
+      font-size: 14px;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+
+    .review p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .course {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .course .icon {
+      font-size: 28px;
+    }
+
+    .course h3 {
+      margin: 10px 0 8px;
+      font-size: 22px;
+      color: var(--dark);
+    }
+
+    .course .level {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .course ul {
+      padding-left: 20px;
+      margin: 12px 0;
+    }
+
+    .course-note {
+      margin-top: 28px;
+      padding: 18px 22px;
+      border-radius: 16px;
+      background: var(--accent-soft);
+      color: #3d4a42;
+    }
+
+
+    .launch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--peach-soft);
+      color: var(--dark);
+      border: 1px solid #e6c9b8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .old-price {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    .launch-price {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 4px 0 2px;
+    }
+
+    .launch-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border 0.2s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(51, 68, 59, 0.08);
+    }
+
+    .price-card.selected {
+      background: var(--peach-soft);
+      border: 2px solid var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(51, 68, 59, 0.10);
+    }
+
+    .price-card.selected {
+      background: var(--peach-soft);
+      border: 2px solid var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(51, 68, 59, 0.10);
+    }
+
+    .price-card h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    .price-card .desc {
+      color: var(--muted);
+      font-size: 14px;
+      min-height: 65px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 18px 0 2px;
+    }
+
+    .per {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .price-card .small {
+      margin-top: auto;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact-box {
+      background: var(--dark);
+      color: white;
+      border-radius: 28px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      margin: 0 0 10px;
+      font-size: 38px;
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: #d8dfdb;
+      max-width: 700px;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 28px 60px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+
+    .course:nth-child(1) {
+      background: var(--green-soft);
+    }
+
+    .course:nth-child(2) {
+      background: var(--peach-soft);
+    }
+
+    .course:nth-child(3) {
+      background: var(--yellow-soft);
+    }
+
+    #reviews {
+      background: rgba(246, 229, 218, 0.28);
+      max-width: none;
+      padding-left: max(28px, calc((100% - 1120px) / 2 + 28px));
+      padding-right: max(28px, calc((100% - 1120px) / 2 + 28px));
+    }
+
+    #reviews > .section-title,
+    #reviews > .reviews-grid {
+      max-width: 1064px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-card.selected {
+      background: var(--peach-soft);
+      border: 2px solid var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(51, 68, 59, 0.10);
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, var(--dark), #526b5e);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 35px;
+      }
+
+      .reviews-grid,
+      .courses-grid,
+  
+    .launch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--peach-soft);
+      color: var(--dark);
+      border: 1px solid #e6c9b8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .old-price {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    .launch-price {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 4px 0 2px;
+    }
+
+    .launch-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px 20px;
+      }
+
+      .menu {
+        gap: 12px;
+      }
+
+      .menu a {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 55px 22px;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .reviews-grid,
+      .courses-grid,
+  
+    .launch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--peach-soft);
+      color: var(--dark);
+      border: 1px solid #e6c9b8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .old-price {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    .launch-price {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 4px 0 2px;
+    }
+
+    .launch-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .contact-box {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Yu Japanese</div>
+    <div class="menu">
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#courses">Courses</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">ONLINE PRIVATE LESSONS</div>
+      <div class="launch-badge">🎉 New Website Launch Offer · US$15 / 50 min</div>
+      <h1>Learn Japanese<br>for real life.</h1>
+      <p class="subtitle">
+        實用會話・自然表達・日本生活／職場日語。用你真正會遇到的場景，
+        把「學過的日語」變成「用得出的日語」。
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href="#courses">View Courses</a>
+        <a class="button secondary" href="#reviews">Student Reviews</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <p class="jp">こんにちは！</p>
+      <h3>I'm Yu.</h3>
+      <p>Japanese teacher with long-term study, life and work experience in Japan.</p>
+
+      <div class="hero-facts">
+        <span>🇯🇵 Japan life 15+ years</span>
+        <span>🎓 Japanese graduate school</span>
+        <span>💼 10 years in a Japanese company</span>
+        <span>🗣️ Cantonese / Mandarin / Japanese / English</span>
+        <span>⭐ 100+ five-star reviews</span>
+		<span>💻 500+ online lessons taught</span>
+      </div>
+    </div>
+  </header>
+
+
+  <section id="about">
+    <div class="section-title">
+      <span class="eyebrow">ABOUT ME</span>
+      <h2>你好，我是 Yu。</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          你好！我目前在日本生活、學習同工作超過15年。
+          由日本語言學校開始學日語，其後學習商業日語、升讀日本大學院，
+          畢業後一直在日本企業工作，至今已有10年日企工作經驗。
+        </p>
+
+        <p>
+          我希望課堂不只是背文法同生字，而是幫你將學過的日語真正用出來。
+          無論是旅行、日常生活、留學、面試，或者工作上需要用日語，
+          都可以按照你的程度同目標調整內容。
+        </p>
+      </div>
+
+      <div class="fact-list">
+        <div>🇯🇵 日本生活15年＋｜日本大學院畢業｜日企工作10年</div>
+        <div>🎤 展會翻譯・隨行口譯・中文教學經驗</div>
+        <div>🗣️ 廣東話／普通話／日語／英文</div>
+        <div>💬 實用會話・自然表達・日本生活／職場日語</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="reviews">
+    <div class="section-title">
+      <span class="eyebrow">STUDENT REVIEWS</span>
+      <h2>學生評語</h2>
+      <p>以下節錄部分學生評價。</p>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <h3>Student from Hong Kong 🇭🇰</h3>
+        <p>
+          已跟老師學習接近半年，老師會根據我的需要設計課件，也很用心修改作業。
+          在老師的幫助下，我成功考過了 N4。課堂和作業都有很多口說機會，
+          現在繼續學習 N3，真的很感恩遇到這位老師。
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <h3>Student from Hong Kong 🇭🇰</h3>
+        <p>
+          啱啱上完25分鐘試堂，老師教得非常清晰易明！
+          特別喜歡老師準備咗好多旅行用嘅實用對話，內容即刻可以用得落去。
+          解釋清楚，節奏舒服，25分鐘過得好快～
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <h3>Student from Hong Kong 🇭🇰</h3>
+        <p>
+          老師能用廣東話溝通，日文也十分順暢！
+          不停鼓勵我說日文，也能很精準地指出我的弱點。
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <h3>Student from Taiwan 🇹🇼</h3>
+        <p>
+          老師很仔細地跟我們講解50音和自我介紹，上課有很多口說的機會，
+          也會依照我們的程度調整課程方向，非常感謝！
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <h3>Student from Taiwan 🇹🇼</h3>
+        <p>
+          老師準備了很多面試相關內容，雖然比較困難，
+          但都是工作上很需要的思維和表達。很感謝老師用心整理！
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <h3>Student from Mainland China 🇨🇳</h3>
+        <p>
+          老師很快就能分析出我的需求和學習目標，
+          並針對我主要想學的主題準備相應教材。簡單易明，讚！
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="courses">
+    <div class="section-title">
+      <span class="eyebrow">COURSES</span>
+      <h2>課程介紹</h2>
+      <p>依照程度、學習目的和你想使用日語的場景來安排內容。</p>
+    </div>
+
+    <div class="courses-grid">
+
+      <div class="course">
+        <div class="icon">🌱</div>
+        <h3>初級口語班</h3>
+        <div class="level">零基礎～N4</div>
+        <ul>
+          <li>由五十音開始</li>
+          <li>打好文法基礎</li>
+          <li>加入實用旅遊對話</li>
+        </ul>
+        <p>喺對話入面學文法同生字，唔會只係背書。</p>
+      </div>
+
+      <div class="course">
+        <div class="icon">🌿</div>
+        <h3>中級口語班</h3>
+        <div class="level">N4以上</div>
+        <ul>
+          <li>用你有興趣嘅話題練習</li>
+          <li>改善發音</li>
+          <li>大量口說訓練</li>
+        </ul>
+        <p>幫你講得自然、自信。</p>
+      </div>
+
+      <div class="course">
+        <div class="icon">🌳</div>
+        <h3>中高級口語班</h3>
+        <div class="level">N3～N2</div>
+        <ul>
+          <li>活用已學文法</li>
+          <li>地道日文表達</li>
+          <li>互動式會話練習</li>
+        </ul>
+        <p>由「識」變成「用得出」。</p>
+      </div>
+
+    </div>
+
+    <div class="course-note">
+      🎓 亦可協助留學準備、面試對策、商務日語及 JLPT 考試策略。
+    </div>
+  </section>
+
+
+  
+  
+  
+  <section id="pricing">
+    <div class="section-title">
+      <span class="eyebrow">PRICING</span>
+      <h2>課程價格</h2>
+      <p>新網站上線期間，部分一般課程提供限時體驗優惠。所有課程均為 1 對 1 私人課，價格以 USD 計算。</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h3>Japanese Starter</h3>
+        <div class="desc">五十音、基本發音、招呼語及最初級句型。</div>
+        <div class="old-price">Regular US$18</div>
+        <div class="launch-price">US$15</div>
+        <div class="per">per 50 min lesson</div>
+        <div class="launch-note">Launch offer · new students only</div>
+      </div>
+
+      <div class="price-card">
+        <h3>Beginner Japanese</h3>
+        <div class="desc">N5～N4 基礎文法、實用會話及旅行日語。</div>
+        <div class="old-price">Regular US$21</div>
+        <div class="launch-price">US$15</div>
+        <div class="per">per 50 min lesson</div>
+        <div class="launch-note">Launch offer · first 5 lessons</div>
+      </div>
+
+      <div class="price-card">
+        <h3>Intermediate Japanese</h3>
+        <div class="desc">N4～N2 程度，文法活用、自然表達及會話。</div>
+        <div class="old-price">Regular US$21</div>
+        <div class="launch-price">US$15</div>
+        <div class="per">per 50 min lesson</div>
+        <div class="launch-note">Launch offer · first 5 lessons</div>
+      </div>
+
+      <div class="price-card">
+        <h3>Conversation Lesson</h3>
+        <div class="desc">日常、旅行、興趣話題、發音與自然表達。</div>
+        <div class="old-price">Regular US$21</div>
+        <div class="launch-price">US$15</div>
+        <div class="per">per 50 min lesson</div>
+        <div class="launch-note">Launch offer · first 5 lessons</div>
+      </div>
+
+      <div class="price-card">
+        <h3>JLPT Exam Strategy</h3>
+        <div class="desc">真題分析、做題策略、弱點分析及集中訓練。</div>
+        <div class="price">US$25</div>
+        <div class="per">per 50 min lesson</div>
+        <div class="small">Focused / intensive lesson</div>
+      </div>
+
+      <div class="price-card">
+        <h3>Interview / Business</h3>
+        <div class="desc">面試對策、商務日語、留學準備及客製化內容。</div>
+        <div class="price">US$28</div>
+        <div class="per">per 50 min lesson</div>
+        <div class="small">依照課程內容及準備需求安排</div>
+      </div>
+
+    </div>
+
+    <div class="course-note">
+      🎉 New Website Launch Offer：一般課程新生前 5 堂可享 US$15 / 50 min。之後恢復正常價格；JLPT 考試策略及面試／商務課不適用此優惠。
+    </div>
+  </section>
+
+
+
+
+
+  <section id="contact">
+    <div class="contact-box">
+      <div>
+        <h2>Book a lesson</h2>
+        <p>
+	      Stripe / PayPal / FPS / Booking link / Email / WhatsApp 等。
+		  聯繫方式：laiyupengpeng@gmail.com
+        </p>
+      </div>
+
+      <a class="button" href="#">Booking Coming Soon</a>
+    </div>
+  </section>
+
+
+  <footer>
+    © 2026 Yu Japanese · Online Private Lessons
+  </footer>
+
+
+  <script>
+    const priceCards = document.querySelectorAll('.price-card');
+
+    priceCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const alreadySelected = card.classList.contains('selected');
+
+        priceCards.forEach(c => c.classList.remove('selected'));
+
+        if (!alreadySelected) {
+          card.classList.add('selected');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
