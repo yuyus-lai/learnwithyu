@@ -221,6 +221,141 @@
       padding-bottom: 0;
     }
 
+
+    /* ---------- Teacher Profile ---------- */
+
+    #profile {
+      max-width: none;
+      background: rgba(229, 238, 231, 0.42);
+      padding-left: max(28px, calc((100% - 1120px) / 2 + 28px));
+      padding-right: max(28px, calc((100% - 1120px) / 2 + 28px));
+    }
+
+    #profile > .section-title,
+    #profile > .profile-grid {
+      max-width: 1064px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .profile-summary,
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+    }
+
+    .profile-summary {
+      padding: 30px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .profile-photo {
+      width: 100%;
+      display: block;
+      margin-bottom: 22px;
+      border-radius: 18px;
+      background: #ffffff;
+      object-fit: contain;
+    }
+
+    .profile-summary h3 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      color: var(--dark);
+    }
+
+    .profile-role {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .profile-summary p {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .profile-tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .profile-details {
+      display: grid;
+      gap: 18px;
+    }
+
+    .profile-card {
+      padding: 26px 28px;
+    }
+
+    .profile-card h3 {
+      margin: 0 0 18px;
+      font-size: 19px;
+      color: var(--dark);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #eee9e2;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .timeline-label {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -461,6 +596,7 @@
 
     .hero > *,
     .about-grid > *,
+    .profile-grid > *,
     .reviews-grid > *,
     .courses-grid > *,
     .pricing-grid > * {
@@ -470,6 +606,8 @@
     .review,
     .course,
     .price-card,
+    .profile-summary,
+    .profile-card,
     .hero-card,
     .fact-list,
     .contact-box {
@@ -480,8 +618,13 @@
 
     @media (max-width: 900px) {
       .hero,
-      .about-grid {
+      .about-grid,
+      .profile-grid {
         grid-template-columns: 1fr;
+      }
+
+      .profile-summary {
+        position: static;
       }
 
       .hero {
@@ -596,9 +739,25 @@
         line-height: 1.15;
       }
 
-      #reviews {
+      #reviews,
+      #profile {
         padding-left: 18px;
         padding-right: 18px;
+      }
+
+      .profile-grid {
+        gap: 16px;
+      }
+
+      .profile-summary,
+      .profile-card {
+        padding: 22px;
+      }
+
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
       }
 
       .reviews-grid,
@@ -674,7 +833,8 @@
       }
 
       section,
-      #reviews {
+      #reviews,
+      #profile {
         padding-left: 15px;
         padding-right: 15px;
       }
@@ -695,6 +855,7 @@
     <div class="logo">Yu Japanese</div>
     <div class="menu">
       <a href="#about">About</a>
+      <a href="#profile">Profile</a>
       <a href="#reviews">Reviews</a>
       <a href="#courses">Courses</a>
       <a href="#pricing">Pricing</a>
@@ -766,6 +927,108 @@
     </div>
   </section>
 
+
+
+  <section id="profile">
+    <div class="section-title">
+      <span class="eyebrow">TEACHER PROFILE</span>
+      <h2>老師履歷</h2>
+      <p>從日本語言學習、升學到日企工作與教學，以下是與日語及教學相關的主要經歷。</p>
+    </div>
+
+    <div class="profile-grid">
+
+      <div class="profile-summary">
+        <img
+          class="profile-photo"
+          src="teacherphoto.png"
+          alt="Yu Japanese language teacher"
+        >
+        <h3>Yu</h3>
+        <p class="profile-role">Japanese Language Teacher</p>
+
+        <p>🇯🇵 Japan life / study / work 15+ years</p>
+        <p>🎓 Master's Degree in Japan</p>
+        <p>💼 10 years in a Japanese company</p>
+        <p>🌐 <a href="https://learnwithyu.com/" target="_blank" rel="noopener">LearnWithYu.com</a></p>
+
+        <div class="profile-tags">
+          <span class="profile-tag">JLPT N1</span>
+          <span class="profile-tag">Cantonese</span>
+          <span class="profile-tag">Mandarin</span>
+          <span class="profile-tag">Japanese</span>
+          <span class="profile-tag">English</span>
+        </div>
+      </div>
+
+      <div class="profile-details">
+
+        <div class="profile-card">
+          <h3>🎓 Education & Japanese Study</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-label">Japanese Study</div>
+              <div>
+                <strong>日本語言學校 → 商業日語</strong>
+                <p>由日本語言學校開始系統學習日語，其後進一步學習商業日語。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-label">Master's Degree</div>
+              <div>
+                <strong>上智大學大學院｜地球環境研究科</strong>
+                <p>日本大學院碩士畢業，完成研究生階段的學習與研究。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <h3>💼 Professional Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-label">Japanese Company</div>
+              <div>
+                <strong>日本企業工作約 10 年</strong>
+                <p>在日本 IT 企業工作，長期在實際職場中使用日語溝通。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-label">Language Work</div>
+              <div>
+                <strong>翻譯・口譯・語言教學</strong>
+                <p>具展會翻譯、隨行口譯及中文教學經驗，亦持續進行線上日語私人教學。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <h3>🗣️ Teaching & Qualifications</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-label">Qualification</div>
+              <div>
+                <strong>JLPT N1</strong>
+                <p>以中文母語者的學習經驗，協助學生理解日語中的難點、差異與自然表達。</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-label">Teaching</div>
+              <div>
+                <strong>300+ online lessons｜60+ five-star reviews</strong>
+                <p>教學內容包括初級日語、實用會話、旅行日語、JLPT、面試及商務日語等。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <section id="reviews">
     <div class="section-title">
@@ -886,7 +1149,7 @@
     <div class="course-note">
      <div> 🎓 亦可協助留學準備、面試對策、商務日語及 JLPT 考試策略。</div> 
 	 <div> 🎓 其他訂製課程請電郵諮詢</div> 
-	 <div> 🎓 多種教材使用：みんなの日本語，日本語GOGOGO，できる日本語，日本語カルテット等c</div> 
+	 <div> 🎓 多種教材使用：みんなの日本語，日本語GOGOGO，できる日本語，日本語カルテット等</div> 
     </div>
   </section>
 
